@@ -4,6 +4,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: unit-rounded, sans-serif;
 }
 
 body {
@@ -73,7 +74,6 @@ p:empty {
 
 /** Theme styles below */
 body {
-  font-family: var(--font-primary--family);
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
