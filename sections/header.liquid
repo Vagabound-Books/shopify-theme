@@ -1,6 +1,6 @@
 <header>
   
-  {{ shop.brand.logo | image_url: relative: 20 | image_tag }}
+  {{ shop.brand.logo | image_url | image_tag: class: 'header-img' }}
 
   <div class="header__menu">
     {% for link in section.settings.menu.links %}
