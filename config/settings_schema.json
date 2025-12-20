@@ -1,11 +1,11 @@
 [
   {
-    "name": "theme_info",
-    "theme_name": "Skeleton",
+    "name": "Vagabound",
+    "theme_name": "Vagabound",
     "theme_version": "0.1.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_author": "Douglas Luman",
+    "theme_documentation_url": "https://github.com/vagabound-books",
+    "theme_support_url": "https://github.com/vagabound-books"
   },
   {
     "name": "t:general.typography",
@@ -59,13 +59,13 @@
       {
         "type": "color",
         "id": "background_color",
-        "default": "#FFFFFF",
+        "default": "#F8F0E3",
         "label": "t:labels.background"
       },
       {
         "type": "color",
         "id": "foreground_color",
-        "default": "#333333",
+        "default": "#222222",
         "label": "t:labels.foreground"
       },
       {
