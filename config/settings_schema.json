@@ -4,8 +4,8 @@
     "theme_name": "Vagabound",
     "theme_version": "0.1.0",
     "theme_author": "Douglas Luman",
-    "theme_documentation_url": "https://github.com/vagabound-books",
-    "theme_support_url": "https://github.com/vagabound-books"
+    "theme_documentation_url": "https:\/\/github.com\/vagabound-books",
+    "theme_support_url": "https:\/\/github.com\/vagabound-books",
   },
   {
     "name": "t:general.typography",
