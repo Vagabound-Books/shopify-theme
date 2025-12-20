@@ -8,5 +8,10 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "max_page_width": "110rem",
+    "background_color": "#f8f0e3",
+    "foreground_color": "#222222",
+    "content_for_index": []
+  }
 }
