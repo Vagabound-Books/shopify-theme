@@ -1,0 +1,17 @@
+ <div class = "offcanvas offcanvas-start" tabindex="-1" id="site__menu">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    {%  comment %} Menu options here {%  endcomment %}
+    <ul >
+    {% for link in linklists.genres.links %}
+      <li>{{ link.title | link_to: link.url }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+{% stylesheet %}
+  #site__menu ul {
+    list-style-type: none;
+  }
+{% endstylesheet %}

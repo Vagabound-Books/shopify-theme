@@ -3,11 +3,11 @@
   <div class="header__menu">
     {%  comment %} Hamburgers! {% endcomment %}
     <a class="fa-solid fa-bars" 
-      href="#offCanvasExample"
+      href="#site__menu"
       role="button"
       data-bs-toggle="offcanvas" 
-      data-bs-target="#offCanvasExample" 
-      aria-controls="offcanvasExample"
+      data-bs-target="#site__menu" 
+      aria-controls="site__menu"
     ></a>
   </div>
 
@@ -16,13 +16,6 @@
     width = 78, 
     height = 78
   >
-  <div class = "offcanvas offcanvas-start" tabindex="-1" id="offCanvasExample">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      {%  comment %} Menu options here {%  endcomment %}
-    </div>
-  </div>
 
   <div class="header__icons">
     {% if shop.customer_accounts_enabled %}

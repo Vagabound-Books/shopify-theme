@@ -36,11 +36,14 @@
   <body>
     {% sections 'header-group' %}
 
+    {% sections 'menu-group' %}
+    
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
 
-    {%  comment %} Scripts {%  endcomment %}
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/> 
+    {% comment %} Scripts {% endcomment %}
+     
+    {% comment %} Scripts {% endcomment %}
   </body>
 </html>
