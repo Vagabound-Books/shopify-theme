@@ -9,13 +9,10 @@
  */
 {
   "type": "header",
-  "name": "t:general.header",
+  "name": "t:general.menu",
   "sections": {
     "header": {
-      "type": "header",
-      "settings": {
-        "menu": "main-menu"
-      }
+      "type": "header"
     }
   },
   "order": [

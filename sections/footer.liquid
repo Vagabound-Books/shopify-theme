@@ -1,22 +1,24 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}
-  </div>
+<footer class = "full-width blue">
+  <div class = "footer-content">
+    <img 
+      src = "{{ shop.brand.square_logo | image_url: width: 78}}" 
+      width = 78, 
+      height = 78
+    >
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
+    <div class="footer__links">
+      {% for link in section.settings.menu.links %}
+        {{ link.title | link_to: link.url }}
       {% endfor %}
-    {% endif %}
+    </div>
+
+    <div class="footer__payment">
+      {% if section.settings.show_payment_icons %}
+        {% for type in shop.enabled_payment_types %}
+          {{ type | payment_type_svg_tag }}
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
 </footer>
 
@@ -25,15 +27,29 @@
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
+    background-color: #11314D;
+    color: #fff;
+    grid-column: 2;
   }
   footer a {
     text-decoration: none;
-    color: var(--color-foreground);
+    color: #fff;
   }
   footer .footer__links,
   footer .footer__payment {
     display: flex;
     gap: 1rem;
+  }
+  .blue {
+    display: grid;
+    grid-template-columns: var(--content-grid);
+    background-color: #11314D;
+    padding: 72px 0;
+  }
+  .footer-content {
+    display: flex;
+    grid-column: 2;
+    justify-content: space-between;
   }
 {% endstylesheet %}
 

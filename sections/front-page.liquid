@@ -2,23 +2,22 @@
   Welcome to Shopify theme development!
 {% endcomment %}
 
-<div class="welcome full-width">
-  <div class="welcome-content">
-    <div>
-      <h1>Vagabound Books</h1>
-
-      <p class="welcome-description">
-        The Skeleton theme is a minimal, carefully structured Shopify theme designed to help you quickly get started.
-        Designed with modularity, maintainability, and Shopify's best practices in mind.
-      </p>
-
-      <p class="welcome-description">
-        Themes shape the online store experience for merchants and their customers. Build fast, flexible themes at scale
-        using Liquid, Shopify's theme templating language, along with HTML, CSS, JavaScript, and JSON.
-      </p>
+<div class="featured full-width">
+  <div class="featured-content">
+    <div class = "new-arrivals">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          {{ collection.products }}
+          {% for prodcut in collection.products %}
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ product.image | image_url }}" alt="{{product.title}}" height = 100 width = auto>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-    <div class="icon">
-      <img src="{{ 'shoppy-x-ray.svg' | asset_url }}" width="300" height="300">
+    <div class="tour-dates">
+      
     </div>
   </div>
 </div>
@@ -53,21 +52,32 @@
 </div>
 
 {% stylesheet %}
-  .welcome {
+  .new-arrivals {
+    background-color: #F0CE97;
+    flex: auto;
+    height: 100%;
+  }
+
+  .tour-dates {
+    flex: auto;
+    height: 100%;
+    background-color: #E4EEF7;
+  }
+
+  .featured {
     display: grid;
     grid-template-columns: var(--content-grid);
-    background-color: #f6f6f7;
     padding: 72px 0;
   }
 
-  .welcome-content {
+  .featured-content {
     grid-column: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
     width: 100%;
-    padding: 0 24px;
+    flex-direction: row;
   }
 
   .welcome-description {
