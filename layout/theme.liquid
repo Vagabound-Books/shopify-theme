@@ -7,10 +7,14 @@
     {% comment %} Adobe Type; TODO: Change to Shopify CDN {% endcomment %}
     <link rel="stylesheet" href="https://use.typekit.net/qbg0hqo.css">
     {% comment %} Bootstrap CDN {% endcomment %}
-    <link rel="stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>  
+    <link rel="stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"> 
     {%  comment %} FontAwesome 5 {%  endcomment %}
     <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    {%  comment %} HEAD scripts {%  endcomment %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     {% comment %}
       Font preloading:
       1. Preconnect to font CDN for faster connection
@@ -43,7 +47,14 @@
     {% sections 'footer-group' %}
 
     {% comment %} Scripts {% endcomment %}
-     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script> 
+    <script>
+      jQuery(document).ready(function(){
+        jQuery('#featured-slider').slick({
+
+        });
+      });
+    </script>
     {% comment %} Scripts {% endcomment %}
   </body>
 </html>
