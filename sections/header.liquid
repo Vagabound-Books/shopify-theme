@@ -29,15 +29,16 @@
   </div>
   <div class="header__icons">
     {% if shop.customer_accounts_enabled %}
-      {{ 'icon-account.svg' | inline_asset_content | link_to: routes.account_url }}
+      {{ 'reader.svg' | inline_asset_content | link_to: routes.account_url }}
     {% endif %}
-
+    <a href class="wkh-button">
+      {{ 'bookshelf.svg' | inline_asset_content }}
+    </a>
     <a href="{{ routes.cart_url }}">
       {% if cart.item_count > 0 %}
         <sup>{{ cart.item_count }}</sup>
       {% endif %}
-
-      {{ 'icon-cart.svg' | inline_asset_content }}
+      {{ 'basket.svg' | inline_asset_content }}
     </a>
   </div>
 </header>
@@ -95,6 +96,55 @@
   header .header__search input:active,
   header .header__search input:focus {
     border: 0;
+  }
+
+    .wishlist-header-link .wkh-button {
+    --icon-size: 22px;
+    --icon-fill: transparent;
+    --icon-stroke: #000000;
+    --icon-stroke-width: 1px;
+    --counter-size: 15px;
+
+    display: flex;
+    position: relative;
+    padding: 16px 12px;
+  }
+
+  .wishlist-header-link .wkh-icon svg {
+    display: block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    overflow: visible;
+    pointer-events: none;
+  }
+  
+  .wishlist-header-link .wkh-icon svg path {
+    fill: var(--icon-fill);
+    stroke: var(--icon-stroke);
+    stroke-width: var(--icon-stroke-width);
+    vector-effect: non-scaling-stroke;
+  }
+  
+  .wishlist-header-link .wkh-counter {
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--counter-size);
+    height: var(--counter-size);
+    border-radius: calc(var(--counter-size) / 2);
+    font-size: 11px;
+    line-height: 1;
+    background: black;
+    color: white;
+    position:  absolute;
+    top: 25px;
+    right: 5px;
+  }
+
+  .wishlist-header-link .wkh-selected .wkh-counter {
+    opacity: 1;
+    transition: .2s opacity;
   }
 {% endstylesheet %}
 

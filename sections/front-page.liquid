@@ -21,6 +21,14 @@
               <a href = "/products/{{book.handle}}">
                 <img src="{{ book.media[0].src | image_url }}" alt="{{book.title}}" height = "100" width = auto>
               </a>
+              <span class = "featured-item-info">
+                <ul>
+                  <li class = "serif">{{ book.title }}</li>
+                  <li>{{ book.metafields.isbn_db_connector.authors  }}</li>
+                  <li>{{ book.metafields.isbn_db_connector.pages  }} pp.</li>
+                  <li>{{ book.metafields.isbn_db_connector.binding }}</li>
+                </ul>
+              </span>
             </div>
           {% endif %}
         {% endfor %}
@@ -77,12 +85,13 @@
     grid-template-rows: auto auto;
     grid-template-columns: auto auto auto auto;
     grid-column: 2;
+    grid-gap: 8px;
+    gap: 8px;
   }
 
   .banners > div {
     background-color: #E4EEF7;
     padding: 16px;
-    margin: 8px;
   }
 
   .vertical-banner {
@@ -114,11 +123,26 @@
   }
   
   .featured-item {
-    padding: 16px;
+    margin: 16px;
+    display: flex !important;
+    flex-direction: row;
   }
   
   .featured-item img {
     height: 33vh;
+  }
+
+  .featured-item-info {
+     background-color: #E4EEF7;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+  }
+
+  .featured-item-info ul {
+    list-style-type: none;
+    padding: 8px;
+    margin-bottom: 0;
   }
 
   .featured-content {
@@ -181,6 +205,10 @@
     color: rgb(92, 95, 98);
     padding: 3px 10px 5px;
     text-decoration: none;
+  }
+
+  .serif {
+    font-family: reiher-headline, sans-serif;
   }
 {% endstylesheet %}
 

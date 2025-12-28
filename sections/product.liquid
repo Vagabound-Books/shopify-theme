@@ -1,45 +1,165 @@
-{% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
+<div class = "product-listing">
+  <div class="product-images">
+    {% for image in product.images %}
+      {% render 'image', class: 'product-image', image: image %}
+    {% endfor %}
+  </div>
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
-{% endcomment %}
-
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
-</div>
-
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
-
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
-
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
+  <div class="product-info">
+    <div class="product-collection-data">
+      <div>
+        <h1>{{ product.title }}</h1>
+        <h2>{{ product.metafields.isbn_db_connector.authors }}</h2>
+        <p>{{ product.price | money }}</p>
+        <div class = "product-info-details">
+          <div>
+            <span>{{ 'bar-code.svg' | inline_asset_content }}</span> 
+            <span>{{  product.metafields.isbn_db_connector.isbn13 }}</span>
+          </div>
+          <div>
+            <span>{{ 'publisher.svg' | inline_asset_content }}</span>
+            <span>{{ product.metafields.isbn_db_connector.publisher }}</span>
+          </div>
+          <div>
+            <span>{{ 'spine.svg' | inline_asset_content }}</span>
+            <span>{{ product.metafields.isbn_db_connector.binding }}</span>
+          </div>
+          <div><span>{{ 'stamp.svg' | inline_asset_content }}</span></div>
+        </div>
+      </div>
+      <div class="product-form">
+        {% form 'product', product %}
+          {% assign current_variant = product.selected_or_first_available_variant %}
+          <input type="hidden" name="id" value="{{current_variant.id}}">
+          <input type="hidden" name="quantity" value = 1>
+          <div class ="button-container-horiz">
+            <button type="button" class = "icon-button shelf-button">
+              {{ 'bookshelf.svg' | inline_asset_content }}
+            </button>
+            <button type="submit" class = "icon-button cart-button">
+              {{ 'basket.svg' | inline_asset_content }}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+    <h3>About the book</h3> 
+    <p>{{ product.description }}</p>
+    <div class = "product-tags">
+      {% for tag in product.tags %}
+        <a href = "{{ routes.collections_url}}/{{ tag | handleize }}">
+          <div class = "product-category"><span>{{ 'tag.svg' | inline_asset_content }}</span>{{ tag }}</div>
+        </a>
       {% endfor %}
-    </select>
-
-    <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
+    </div>
+  </div>
 </div>
+
+{% stylesheet %}
+  .button-container-horiz {
+    display: flex;
+    grid-template-columns: auto auto;
+    flex-direction: row;
+  }
+
+  .icon-button {
+    border: 0;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .cart-button:after {
+    margin-left: 8px;
+    content: 'Add to basket'
+  }
+
+  .shelf-button:after {
+    margin-left: 8px;
+    content: 'Add to shelf';
+  }
+
+  .product-listing {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: auto;
+    grid-gap: 16px;
+    gap: 16px;
+  }
+
+  .product-info-details {
+    display: flex;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    grid-gap: 8px;
+    gap: 8px;
+    padding-bottom: 5vh;
+  }
+
+  .product-info-details > div {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    /* background-color: #E4EEF7; */
+  }
+
+  .product-form {
+    padding-bottom: 5vh;
+  }
+
+  .product-info-details > div > span {
+    padding: 8px;
+  }
+
+  .product-info svg {
+    width: 2rem;
+  }
+
+  .product-collection-data {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .product-image img {
+    height: auto;
+  }
+  
+  .product-category {
+    background: #E4EEF7;
+    color: #222;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    font-size: .75rem;
+    margin: 0px 8px;
+    width: fit-content;
+  }
+
+  .product-category:hover {
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+    fill: #fff;
+  }
+
+  .product-category svg {
+    width: .5rem;
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .product-tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  
+  .product-tags a {
+    text-decoration: none;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
