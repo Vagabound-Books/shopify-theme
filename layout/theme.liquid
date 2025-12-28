@@ -14,7 +14,8 @@
     {%  comment %} HEAD scripts {%  endcomment %}
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js" async></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js" async></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" async></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script> 
     {% comment %}
       Font preloading:
       1. Preconnect to font CDN for faster connection
@@ -47,12 +48,10 @@
     {% sections 'footer-group' %}
 
     {% comment %} Scripts {% endcomment %}
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script> 
     <script>
       jQuery(document).ready(function(){
-        jQuery('#featured-slider').slick({
-
-        });
+        jQuery('#featured-slider').css('display','block');
+        jQuery('#featured-slider').slick({});
       });
     </script>
     {% comment %} Scripts {% endcomment %}

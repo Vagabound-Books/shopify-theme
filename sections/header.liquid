@@ -1,5 +1,4 @@
-<header>
-  
+<header> 
   <div class="header__menu">
     {%  comment %} Hamburgers! {% endcomment %}
     <a class="fa-solid fa-bars" 
@@ -9,21 +8,23 @@
       data-bs-target="#site__menu" 
       aria-controls="site__menu"
     ></a>
-    <img 
+    <a href = "/">
+      <img 
       src = "{{ shop.brand.square_logo | image_url: width: 78}}" 
       width = 78, 
       height = 78
-    >
+     >
+    </a>
   </div>
   <div class="header__search">
     <form action="{{ routes.search_url }}">
+      <i class="fa fa-magnifying-glass"></i>
       <input 
         type="search"
         placeholder="Search..."
         name="q"
         value="{{ search.terms | escape }}"
       >
-      <input type="submit" value="Search">
     </form>
   </div>
   <div class="header__icons">
@@ -40,7 +41,6 @@
     </a>
   </div>
 </header>
-
 {% stylesheet %}
   header {
     height: 5rem;
@@ -70,6 +70,31 @@
 
   header .header__menu {
     align-items: center;
+  }
+  
+  header .header__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  header .header__search i {
+    position: absolute;
+    right: 10px;
+    top: .45rem;
+  }
+
+  header .header__search input {
+    padding-right: 30px;
+    padding-left: .5em;
+    border: 0;
+    width: 33vw;
+    font-size: 14pt;
+  }
+
+  header .header__search input:active,
+  header .header__search input:focus {
+    border: 0;
   }
 {% endstylesheet %}
 

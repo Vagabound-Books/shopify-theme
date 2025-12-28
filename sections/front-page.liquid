@@ -1,13 +1,20 @@
-{% comment %}
-  Welcome to Shopify theme development!
-{% endcomment %}
-
 {% assign newest_arrivals = collections["books"] %}
 
 <div class="featured full-width">
+  <div class = "banners">
+    <div class = "horiz-banner-1">
+    </div>
+    <div class = "horiz-banner-2">
+    </div>
+    <div class = "vertical-banner">
+    </div>
+  </div>
+</div>
+<h2>New Arrivals</h2>
+<div class="featured full-width">
   <div class="featured-content">
     <div id = "new-arrivals">
-      <div id="featured-slider" data-slick = '{"infinite": false, "arrows": false, "slidesToShow": 1, "variableWidth": true}'>
+      <div id="featured-slider" data-slick = '{"infinite": false, "arrows": false, "slidesToScroll": 3, "variableWidth": true}'>
         {% for book in newest_arrivals.products %}
           {% if book.variants.first.inventory_quantity > 0 %}
             <div class="featured-item">
@@ -18,9 +25,6 @@
           {% endif %}
         {% endfor %}
       </div>
-    </div>
-    <div class="tour-dates">
-      
     </div>
   </div>
 </div>
@@ -63,6 +67,38 @@
     width: 33vw;
     padding: 0vh 2.5vh;
   }
+  
+  #featured-slider {
+    display: none;
+  }
+
+  .banners {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto auto auto;
+    grid-column: 2;
+  }
+
+  .banners > div {
+    background-color: #E4EEF7;
+    padding: 16px;
+    margin: 8px;
+  }
+
+  .vertical-banner {
+    grid-row: 1 / span 4;
+    grid-column: 3 / span 2;
+  }
+
+  .horiz-banner-1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+  
+  .horiz-banner-2 {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+  }
 
   .tour-dates {
     flex: auto;
@@ -73,7 +109,8 @@
   .featured {
     display: grid;
     grid-template-columns: var(--content-grid);
-    padding: 5vh 0;
+    padding-bottom: 5vh;
+    min-height: 33vh;
   }
   
   .featured-item {
@@ -92,12 +129,6 @@
     gap: 1rem;
     width: 100%;
     flex-direction: row;
-  }
-
-  .welcome-description {
-    max-width: 80ch;
-    line-height: 1.4;
-    margin-top: 1.5rem;
   }
 
   .icon {
