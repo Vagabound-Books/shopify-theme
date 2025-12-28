@@ -32,7 +32,7 @@
           {% assign current_variant = product.selected_or_first_available_variant %}
           <input type="hidden" name="id" value="{{current_variant.id}}">
           <input type="hidden" name="quantity" value = 1>
-          <div class ="button-container-horiz">
+          <div class ="button-container-stacked">
             <button type="button" class = "icon-button shelf-button">
               {{ 'bookshelf.svg' | inline_asset_content }}
             </button>
@@ -60,6 +60,25 @@
     display: flex;
     grid-template-columns: auto auto;
     flex-direction: row;
+  }
+
+  .button-container-stacked {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  .button-container-stacked > button {
+    background: #E4EEF7;
+    padding: 8px;
+    margin: 8px 0px;
+  }
+
+  .button-container-stacked > button:hover {
+    background-color: #222;
+    color: #fff;
+    fill: #fff;
+    cursor: pointer;
   }
 
   .icon-button {
@@ -106,6 +125,8 @@
 
   .product-form {
     padding-bottom: 5vh;
+    align-content: center;
+    margin: 0 auto;
   }
 
   .product-info-details > div > span {
