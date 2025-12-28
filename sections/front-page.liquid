@@ -14,7 +14,10 @@
 <div class="featured full-width">
   <div class="featured-content">
     <div id = "new-arrivals">
-      <div id="featured-slider" data-slick = '{"infinite": false, "arrows": false, "slidesToScroll": 3, "variableWidth": true}'>
+      <div 
+        id="featured-slider" 
+        data-slick = '{"infinite": false, "arrows": true, "slidesToScroll": 3, "variableWidth": true}'
+      >
         {% for book in newest_arrivals.products %}
           {% if book.variants.first.inventory_quantity > 0 %}
             <div class="featured-item">
@@ -78,6 +81,26 @@
   
   #featured-slider {
     display: none;
+  }
+
+  .slick-arrow {
+    position: absolute;
+    z-index: 1000000;
+    display: inline-block;
+    align-content: center;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  .slick-prev {
+    transform: translateY(16vh);
+    left: -32px;
+  }
+
+  .slick-next {
+    top: 0px;
+    right: -32px;
+    transform: translateY(16vh);
   }
 
   .banners {

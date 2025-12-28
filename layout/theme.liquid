@@ -52,7 +52,10 @@
     <script>
       jQuery(document).ready(function(){
         jQuery('#featured-slider').css('display','block');
-        jQuery('#featured-slider').slick({});
+        jQuery('#featured-slider').slick({
+          "prevArrow": '<button type="button" class="slick-prev">&laquo;</button>',
+          "nextArrow": '<button type="button" class="slick-next">&raquo;</button>'
+        });
       });
     </script>
     {% comment %} Scripts {% endcomment %}
