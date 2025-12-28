@@ -9,14 +9,23 @@
       data-bs-target="#site__menu" 
       aria-controls="site__menu"
     ></a>
+    <img 
+      src = "{{ shop.brand.square_logo | image_url: width: 78}}" 
+      width = 78, 
+      height = 78
+    >
   </div>
-
-  <img 
-    src = "{{ shop.brand.square_logo | image_url: width: 78}}" 
-    width = 78, 
-    height = 78
-  >
-
+  <div class="header__search">
+    <form action="{{ routes.search_url }}">
+      <input 
+        type="search"
+        placeholder="Search..."
+        name="q"
+        value="{{ search.terms | escape }}"
+      >
+      <input type="submit" value="Search">
+    </form>
+  </div>
   <div class="header__icons">
     {% if shop.customer_accounts_enabled %}
       {{ 'icon-account.svg' | inline_asset_content | link_to: routes.account_url }}
@@ -37,7 +46,7 @@
     height: 5rem;
     display: flex;
     align-items: center;
-    justify-content: justify-start;
+    justify-content: space-between;
   }
   header a {
     position: relative;
@@ -57,6 +66,10 @@
   header .header__icons {
     display: flex;
     gap: 1rem;
+  }
+
+  header .header__menu {
+    align-items: center;
   }
 {% endstylesheet %}
 

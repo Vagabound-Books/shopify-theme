@@ -9,11 +9,13 @@
     <div id = "new-arrivals">
       <div id="featured-slider" data-slick = '{"infinite": false, "arrows": false, "slidesToShow": 1, "variableWidth": true}'>
         {% for book in newest_arrivals.products %}
-          <div class="featured-item">
-            <a href = "/products/{{book.handle}}">
-              <img src="{{ book.media[0].src | image_url }}" alt="{{book.title}}" height = "100" width = auto>
-            </a>
-          </div>
+          {% if book.variants.first.inventory_quantity > 0 %}
+            <div class="featured-item">
+              <a href = "/products/{{book.handle}}">
+                <img src="{{ book.media[0].src | image_url }}" alt="{{book.title}}" height = "100" width = auto>
+              </a>
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
