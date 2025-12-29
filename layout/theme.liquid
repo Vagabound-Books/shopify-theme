@@ -49,13 +49,25 @@
     {% sections 'footer-group' %}
 
     {% comment %} Scripts {% endcomment %}
-    <script>
+    <script type="text/javascript">
       jQuery(document).ready(function(){
+        // TODO: Follow naming convention; auto-detect slider-ready content;
+        //       automate/batch all of the functions and attach handlers
         jQuery('#featured-slider').css('display','block');
         jQuery('#featured-slider').slick({
-          "prevArrow": '<button type="button" class="slick-prev">&laquo;</button>',
-          "nextArrow": '<button type="button" class="slick-next">&raquo;</button>'
+          "prevArrow": '<button type="button" class="slick-prev"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>',
+          "nextArrow": '<button type="button" class="slick-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>'
         });
+        var count = jQuery('#featured-slider .slick-slide');
+        jQuery('#featured-slider').on('afterChange', (evt, slick, current) => {
+          let slider = jQuery(slick.$slides.get(current));
+          let elem = jQuery('#featured-slider .slick-current');
+          let active = elem.attr('data-slick-index');
+          // TODO: Calculate elements; determine what arrows should show
+          if (active > 0) {
+            jQuery('#featured-slider .slick-prev').css('display','block');
+          }
+        })
       });
     </script>
     {% comment %} Scripts {% endcomment %}
