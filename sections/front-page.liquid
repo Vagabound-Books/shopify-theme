@@ -1,4 +1,5 @@
 {% assign newest_arrivals = collections["books"] %}
+{% assign big_books = collections["big-books"] %}
 
 <div class="featured full-width">
   <div class = "banners">
@@ -12,10 +13,11 @@
 </div>
 <h2>New Arrivals</h2>
 <div class="featured full-width">
+  {% comment %} Category {% endcomment %}
   <div class="featured-content">
     <div id = "new-arrivals">
       <div 
-        id="featured-slider" 
+        class="featured-slider" 
         data-slick = '{"infinite": false, "arrows": true, "slidesToScroll": 3, "variableWidth": true}'
       >
         {% for book in newest_arrivals.products %}
@@ -26,10 +28,40 @@
               </a>
               <span class = "featured-item-info">
                 <ul>
-                  <li class = "serif">{{ book.title }}</li>
-                  <li>{{ book.metafields.isbn_db_connector.authors  }}</li>
-                  <li>{{ book.metafields.isbn_db_connector.pages  }} pp.</li>
-                  <li>{{ book.metafields.isbn_db_connector.binding }}</li>
+                  <li class = "title serif">{{ book.title }}</li>
+                  <li><span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.authors  }}</li>
+                  <li><span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.pages  }} pp.</li>
+                  <li><span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.binding }}</li>
+                </ul>
+              </span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<h2>Books or Boat Anchors?</h2>
+<div class="featured full-width">
+  {% comment %} Category {% endcomment %}
+  <div class="featured-content">
+    <div id = "big-books">
+      <div 
+        class="featured-slider" 
+        data-slick = '{"infinite": false, "arrows": true, "slidesToScroll": 3, "variableWidth": true}'
+      >
+        {% for book in big_books.products %}
+          {% if book.variants.first.inventory_quantity > 0 %}
+            <div class="featured-item">
+              <a href = "/products/{{book.handle}}">
+                <img src="{{ book.media[0].src | image_url }}" alt="{{book.title}}" height = "100" width = auto>
+              </a>
+              <span class = "featured-item-info">
+                <ul>
+                  <li class = "title serif">{{ book.title }}</li>
+                  <li><span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.authors  }}</li>
+                  <li><span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.pages  }} pp.</li>
+                  <li><span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.binding }}</li>
                 </ul>
               </span>
             </div>
@@ -71,7 +103,7 @@
 
 {% stylesheet %}
 
-  #new-arrivals {
+  #new-arrivals, #big-books {
     background-color: #F0CE97;
     flex: auto;
     height: 100%;
@@ -79,7 +111,7 @@
     padding: 0vh 2.5vh;
   }
   
-  #featured-slider {
+  .featured-slider {
     display: none;
   }
 
@@ -164,12 +196,25 @@
      display: flex;
      flex-direction: column;
      justify-content: center;
+     max-width: 13rem;
   }
 
   .featured-item-info ul {
     list-style-type: none;
     padding: 8px;
     margin-bottom: 0;
+  }
+
+  .featured-item-info li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+  }
+
+  .featured-item-info li > .icon {
+    width: 1rem;
+    margin-right: 1rem;
   }
 
   .featured-content {
@@ -236,6 +281,10 @@
 
   .serif {
     font-family: reiher-headline, sans-serif;
+  }
+
+  .title {
+    font-size: 1.5rem;
   }
 {% endstylesheet %}
 
