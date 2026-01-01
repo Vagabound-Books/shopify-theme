@@ -9,28 +9,28 @@
     <div class="product-collection-data">
       <div>
         <h1>{{ product.title }}</h1>
-        <h2>{{ product.metafields.isbn_db_connector.authors }}</h2>
+        <h2>{{ product.metafields.app-ibp-book.authors.value | join: ", " }}</h2>
         <p>{{ product.price | money }}</p>
         <div class = "product-info-details">
           <div>
             <span>{{ 'bar-code.svg' | inline_asset_content }}</span> 
-            <span>{{  product.metafields.isbn_db_connector.isbn13 }}</span>
+            <span>{{ product.selected_or_first_available_variant.sku }}</span>
           </div>
           <div>
             <span>{{ 'publisher.svg' | inline_asset_content }}</span>
-            <span>{{ product.metafields.isbn_db_connector.publisher }}</span>
+            <span>{{ product.metafields.app-ibp-book.publisher }}</span>
           </div>
           <div>
             <span>{{ 'spine.svg' | inline_asset_content }}</span>
-            <span>{{ product.metafields.isbn_db_connector.binding }}</span>
+            <span>{{ product.metafields.app-ibp-book.binding }}</span>
           </div>
           <div>
             <span>{{ 'stamp.svg' | inline_asset_content }}</span>
-            <span>{{ product.metafields.custom.condition }}</span>
+            <span>{{ product.metafields.app-ibp-book.condition }}</span>
           </div>
           <div>
             <span>{{ 'pages.svg' | inline_asset_content }}</span>
-            <span>{{ product.metafields.isbn_db_connector.pages }} pages</span>
+            <span>{{ product.metafields.app-ibp-book.pages }} pages</span>
           </div>
         </div>
       </div>

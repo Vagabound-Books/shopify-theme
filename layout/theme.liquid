@@ -15,8 +15,7 @@
     {%  comment %} HEAD scripts {%  endcomment %}
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js" async></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js" async></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script> 
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" async></script>
     {% comment %}
       Font preloading:
       1. Preconnect to font CDN for faster connection
@@ -50,14 +49,25 @@
 
     {% comment %} Scripts {% endcomment %}
     <script type="text/javascript">
-      jQuery(document).ready(function(){
-        // TODO: Follow naming convention; auto-detect slider-ready content;
-        //       automate/batch all of the functions and attach handlers
+      jQuery(window).on("load", function(){
         for( let slider of jQuery('.featured-slider').toArray() ) {
           jQuery(slider).css('display','block');
           jQuery(slider).slick({
-            "prevArrow": '<button type="button" class="slick-prev"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>',
-            "nextArrow": '<button type="button" class="slick-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>'
+            infinite: false, 
+            arrows: true, 
+            slidesToScroll: 3, 
+            variableWidth: true,
+            prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>',
+            nextArrow: '<button type="button" class="slick-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>',
+            responsive : [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
           });
           var count = jQuery(this).find('.slick-slide');
           jQuery(slider).on('afterChange', (evt, slick, current) => {
@@ -71,7 +81,8 @@
           })
         }
       });
-    </script>
-    {% comment %} Scripts {% endcomment %}
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script> 
+  {% comment %} Scripts {% endcomment %}
   </body>
 </html>

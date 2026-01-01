@@ -1,5 +1,6 @@
 {% assign newest_arrivals = collections["books"] %}
 {% assign big_books = collections["big-books"] %}
+{% assign old_books = collections["old-books"] %}
 
 <div class="featured full-width">
   <div class = "banners">
@@ -8,19 +9,63 @@
     <div class = "horiz-banner-2">
     </div>
     <div class = "vertical-banner">
+      <div class = "classy">
+        The Vagbound
+      </div>
     </div>
   </div>
 </div>
 <h2>New Arrivals</h2>
+<p>Shop the latest books received into stock.</p>
 <div class="featured full-width">
   {% comment %} Category {% endcomment %}
   <div class="featured-content">
     <div id = "new-arrivals">
       <div 
         class="featured-slider" 
-        data-slick = '{"infinite": false, "arrows": true, "slidesToScroll": 3, "variableWidth": true}'
       >
         {% for book in newest_arrivals.products %}
+          {% if book.variants.first.inventory_quantity > 0 %}
+            <div class="featured-item">
+              <a href = "/products/{{book.handle}}">
+                <img src="{{ book.media[0].src | image_url }}" alt="{{book.title}}" height = "100" width = auto>
+              </a>
+              <span class = "featured-item-info">
+                <ul>
+                  <li class = "title">
+                    <span class = "field serif">{{ book.title }}</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{ book.metafields.app-ibp-book.authors.value | join: ", " }}</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{  book.metafields.app-ibp-book.pages  }} pp.</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{ book.metafields.app-ibp-book.binding }}</span>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<h2>Books or Boat Anchors?</h2>
+<p>Reads for the truly becalmed.</p>
+<div class="featured full-width">
+  {% comment %} Category {% endcomment %}
+  <div class="featured-content">
+    <div id = "big-books">
+      <div 
+        class="featured-slider" 
+      >
+        {% for book in big_books.products %}
           {% if book.variants.first.inventory_quantity > 0 %}
             <div class="featured-item">
               <a href = "/products/{{book.handle}}">
@@ -41,16 +86,17 @@
     </div>
   </div>
 </div>
-<h2>Books or Boat Anchors?</h2>
+
+<h2>Archival Quality</h2>
+<p>Books from beyond your timeline.</p>
 <div class="featured full-width">
   {% comment %} Category {% endcomment %}
   <div class="featured-content">
     <div id = "big-books">
       <div 
         class="featured-slider" 
-        data-slick = '{"infinite": false, "arrows": true, "slidesToScroll": 3, "variableWidth": true}'
       >
-        {% for book in big_books.products %}
+        {% for book in old_books.products %}
           {% if book.variants.first.inventory_quantity > 0 %}
             <div class="featured-item">
               <a href = "/products/{{book.handle}}">
@@ -192,7 +238,7 @@
   }
 
   .featured-item-info {
-     background-color: #E4EEF7;
+     /*background-color: #E4EEF7*/
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -210,11 +256,13 @@
     flex-direction: row;
     align-items: center;
     align-content: center;
+    margin: .5rem 0rem;
+    background-color: #E4EEF7;
   }
 
-  .featured-item-info li > .icon {
+  .featured-item-info li > .icon svg{
     width: 1rem;
-    margin-right: 1rem;
+    margin-right: 1rem; 
   }
 
   .featured-content {
@@ -227,7 +275,7 @@
     flex-direction: row;
   }
 
-  .icon {
+  .info-icon {
     width: 300px;
   }
 
@@ -235,12 +283,6 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 1100px) {
-    .highlights {
-      grid-template-columns: 1fr;
-    }
   }
 
   .highlight {
@@ -285,6 +327,27 @@
 
   .title {
     font-size: 1.5rem;
+  }
+
+  @media (max-width: 1100px) {
+    .highlights {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-item {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .featured-item-info ul {
+      padding: 0;
+    }
+
+    .featured-item-info {
+      max-width: unset;
+      width: 100%;
+      padding: 0;
+    }
   }
 {% endstylesheet %}
 
