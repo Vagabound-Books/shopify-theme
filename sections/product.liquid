@@ -194,6 +194,24 @@
   .product-tags a {
     text-decoration: none;
   }
+
+  @media (max-width: 1024px) {
+    .product-listing {
+      grid-template-columns: auto;
+    }
+    .product-info-details {
+      flex-direction: column;
+    }
+    .product-collection-data {
+      grid-template-columns: auto;
+    }
+    .product-form {
+      margin: 0;
+    }
+    .product-images {
+      margin: 0 auto;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
