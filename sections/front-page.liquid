@@ -57,7 +57,7 @@
   </div>
 </div>
 <h2>Books or Boat Anchors?</h2>
-<p>Reads for the truly becalmed.</p>
+<p>Real doorstops, these.</p>
 <div class="featured full-width">
   {% comment %} Category {% endcomment %}
   <div class="featured-content">
@@ -73,10 +73,21 @@
               </a>
               <span class = "featured-item-info">
                 <ul>
-                  <li class = "title serif">{{ book.title }}</li>
-                  <li><span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.authors  }}</li>
-                  <li><span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.pages  }} pp.</li>
-                  <li><span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.binding }}</li>
+                  <li class = "title">
+                    <span class = "field serif">{{ book.title }}</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{ book.metafields.app-ibp-book.authors.value | join: ", " }}</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{  book.metafields.app-ibp-book.pages  }} pp.</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{ book.metafields.app-ibp-book.binding }}</span>
+                  </li>
                 </ul>
               </span>
             </div>
@@ -104,10 +115,21 @@
               </a>
               <span class = "featured-item-info">
                 <ul>
-                  <li class = "title serif">{{ book.title }}</li>
-                  <li><span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.authors  }}</li>
-                  <li><span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.pages  }} pp.</li>
-                  <li><span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span> {{ book.metafields.isbn_db_connector.binding }}</li>
+                  <li class = "title">
+                    <span class = "field serif">{{ book.title }}</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'pen.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{ book.metafields.app-ibp-book.authors.value | join: ", " }}</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'pages.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{  book.metafields.app-ibp-book.pages  }} pp.</span>
+                  </li>
+                  <li>
+                    <span class = "icon">{{ 'spine.svg' | inline_asset_content }}</span>
+                    <span class = "field">{{ book.metafields.app-ibp-book.binding }}</span>
+                  </li>
                 </ul>
               </span>
             </div>

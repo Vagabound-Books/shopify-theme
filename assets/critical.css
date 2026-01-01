@@ -48,6 +48,7 @@ dialog {
 
 p {
   text-wrap: pretty;
+  line-height: 2rem;
 }
 
 p,

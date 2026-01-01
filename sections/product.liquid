@@ -53,7 +53,7 @@
     <h3>About the book</h3> 
     <p>{{ product.description }}</p>
     <div class = "product-tags">
-      {% for tag in product.tags %}
+      {% for tag in product.metafields.app-ibp-book.categories.value %}
         <a href = "{{ routes.collections_url}}/{{ tag | handleize }}">
           <div class = "product-category"><span>{{ 'tag.svg' | inline_asset_content }}</span>{{ tag }}</div>
         </a>
@@ -108,10 +108,11 @@
 
   .product-listing {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 25% 65%;
     grid-template-rows: auto;
     grid-gap: 16px;
     gap: 16px;
+    margin-top: 16px;
   }
 
   .product-info-details {
@@ -137,6 +138,10 @@
 
   .product-info-details > div {
     background: #E4EEF7;
+  }
+
+  .product-info-details > div {
+    width: fit-content;
   }
 
   .product-info-details > div > span {
